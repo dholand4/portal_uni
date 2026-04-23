@@ -1,4 +1,5 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { Linking } from 'react-native';
 
 import { CONTACTS } from '../../constants/app';
 import { RootStackParamList } from '../../routes/types';
@@ -21,6 +22,10 @@ import {
 type Props = NativeStackScreenProps<RootStackParamList, 'Contacts'>;
 
 export function Contacts({ navigation }: Props) {
+  const handleOpenExternal = async (url: string) => {
+    await Linking.openURL(url);
+  };
+
   return (
     <Container>
       <TopBar>
@@ -38,14 +43,7 @@ export function Contacts({ navigation }: Props) {
         <Section>
           {CONTACTS.map((contact) => (
             <ContactCard key={contact.title}>
-              <ContactButton
-                onPress={() =>
-                  navigation.navigate('WebViewScreen', {
-                    title: contact.title,
-                    url: contact.url
-                  })
-                }
-              >
+              <ContactButton onPress={() => handleOpenExternal(contact.url)}>
                 <ContactLabel>{contact.title}</ContactLabel>
                 <ContactDescription>{contact.description}</ContactDescription>
               </ContactButton>

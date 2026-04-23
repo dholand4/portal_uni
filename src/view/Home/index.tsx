@@ -56,40 +56,19 @@ export function Home({ navigation }: Props) {
               <ActionSubtitle>Ambiente virtual</ActionSubtitle>
             </OpenButton>
 
-            <OpenButton
-              onPress={() =>
-                navigation.navigate('WebViewScreen', {
-                  title: LINKS.portal.title,
-                  url: LINKS.portal.url
-                })
-              }
-            >
+            <OpenButton onPress={() => handleOpenExternal(LINKS.portal.url)}>
               <ButtonLabel>Portal do Aluno</ButtonLabel>
               <ActionSubtitle>Vida acadêmica</ActionSubtitle>
             </OpenButton>
           </ButtonRow>
 
           <ButtonRow>
-            <OpenButton
-              onPress={() =>
-                navigation.navigate('WebViewScreen', {
-                  title: LINKS.sga.title,
-                  url: LINKS.sga.url
-                })
-              }
-            >
+            <OpenButton onPress={() => handleOpenExternal(LINKS.sga.url)}>
               <ButtonLabel>SGA</ButtonLabel>
               <ActionSubtitle>Serviços gerais</ActionSubtitle>
             </OpenButton>
 
-            <OpenButton
-              onPress={() =>
-                navigation.navigate('WebViewScreen', {
-                  title: LINKS.biblioteca.title,
-                  url: LINKS.biblioteca.url
-                })
-              }
-            >
+            <OpenButton onPress={() => handleOpenExternal(LINKS.biblioteca.url)}>
               <ButtonLabel>Biblioteca</ButtonLabel>
               <ActionSubtitle>Acervo digital</ActionSubtitle>
             </OpenButton>

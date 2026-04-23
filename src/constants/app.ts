@@ -15,7 +15,7 @@ export const LINKS = {
   },
   sga: {
     title: 'SGA',
-    url: 'http://sga.ucq.edu.br/sga/login.xhtml?_gl=1*o2cexm*_ga*MjA4ODY5OTQ5MS4xNzc2OTYxODk0*_ga_YC66KZXSZM*czE3NzY5NjE4OTQkbzEkZzAkdDE3NzY5NjE4OTQkajYwJGwwJGgxMDk1MzQ3Mjc4'
+    url: 'https://sga.ucq.edu.br/sga/login.xhtml?_gl=1*o2cexm*_ga*MjA4ODY5OTQ5MS4xNzc2OTYxODk0*_ga_YC66KZXSZM*czE3NzY5NjE4OTQkbzEkZzAkdDE3NzY5NjE4OTQkajYwJGwwJGgxMDk1MzQ3Mjc4'
   },
   biblioteca: {
     title: 'Biblioteca',

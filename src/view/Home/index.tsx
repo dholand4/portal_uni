@@ -1,4 +1,5 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { Linking } from 'react-native';
 
 import { LINKS } from '../../constants/app';
 import { RootStackParamList } from '../../routes/types';
@@ -26,6 +27,10 @@ import {
 type Props = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
 export function Home({ navigation }: Props) {
+  const handleOpenExternal = async (url: string) => {
+    await Linking.openURL(url);
+  };
+
   return (
     <Container>
       <ScrollContent contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }}>
@@ -38,14 +43,7 @@ export function Home({ navigation }: Props) {
             <SectionSubtitle>Unicatólica Quixadá</SectionSubtitle>
           </Header>
 
-          <HeroCard
-            onPress={() =>
-              navigation.navigate('WebViewScreen', {
-                title: LINKS.unicatolica.title,
-                url: LINKS.unicatolica.url
-              })
-            }
-          >
+          <HeroCard onPress={() => handleOpenExternal(LINKS.unicatolica.url)}>
             <HeroLabel>Site Institucional</HeroLabel>
             <HeroSubtitle>Notícias, cursos e informações da Unicatólica</HeroSubtitle>
           </HeroCard>
@@ -53,14 +51,7 @@ export function Home({ navigation }: Props) {
           <SectionHeader>Ambientes</SectionHeader>
 
           <ButtonRow>
-            <OpenButton
-              onPress={() =>
-                navigation.navigate('WebViewScreen', {
-                  title: LINKS.ava.title,
-                  url: LINKS.ava.url
-                })
-              }
-            >
+            <OpenButton onPress={() => handleOpenExternal(LINKS.ava.url)}>
               <ButtonLabel>AVA</ButtonLabel>
               <ActionSubtitle>Ambiente virtual</ActionSubtitle>
             </OpenButton>
@@ -74,7 +65,7 @@ export function Home({ navigation }: Props) {
               }
             >
               <ButtonLabel>Portal do Aluno</ButtonLabel>
-              <ActionSubtitle>Vida Acadêmica</ActionSubtitle>
+              <ActionSubtitle>Vida acadêmica</ActionSubtitle>
             </OpenButton>
           </ButtonRow>
 
@@ -88,7 +79,7 @@ export function Home({ navigation }: Props) {
               }
             >
               <ButtonLabel>SGA</ButtonLabel>
-              <ActionSubtitle>Serviços Gerais</ActionSubtitle>
+              <ActionSubtitle>Serviços gerais</ActionSubtitle>
             </OpenButton>
 
             <OpenButton
@@ -100,7 +91,7 @@ export function Home({ navigation }: Props) {
               }
             >
               <ButtonLabel>Biblioteca</ButtonLabel>
-              <ActionSubtitle>Acervo Digital</ActionSubtitle>
+              <ActionSubtitle>Acervo digital</ActionSubtitle>
             </OpenButton>
           </ButtonRow>
 

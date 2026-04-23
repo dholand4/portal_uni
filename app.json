@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Portal Uni",
-    "slug": "portal_uni",
+    "slug": "portal-uni",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./src/assets/logo.png",
@@ -19,7 +19,14 @@
       "adaptiveIcon": {
         "foregroundImage": "./src/assets/logo.png",
         "backgroundColor": "#ffffff"
+      },
+      "package": "com.dholand4.portaluni"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "bc0e7858-55ad-41f7-8d97-ba94e8623a6e"
       }
-    }
+    },
+    "owner": "dholand4"
   }
 }

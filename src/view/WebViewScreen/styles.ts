@@ -113,3 +113,33 @@ export const MenuItemLabel = styled.Text`
 export const WebViewContainer = styled.View`
   flex: 1;
 `;
+
+export const SupportCard = styled.View`
+  flex: 1;
+  padding: 24px 20px;
+  justify-content: center;
+  gap: 14px;
+  background-color: ${({ theme }: ThemeContext) => theme.colors.background};
+`;
+
+export const Message = styled.Text`
+  color: ${({ theme }: ThemeContext) => theme.colors.muted};
+  font-size: 14px;
+  font-family: ${({ theme }: ThemeContext) => theme.fonts.regular};
+  line-height: 20px;
+`;
+
+export const OpenExternalButton = styled.TouchableOpacity`
+  align-self: flex-start;
+  min-height: 42px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background-color: ${({ theme }: ThemeContext) => theme.colors.primary};
+  justify-content: center;
+`;
+
+export const OpenExternalButtonLabel = styled.Text`
+  color: ${({ theme }: ThemeContext) => theme.colors.buttonText};
+  font-size: 13px;
+  font-family: ${({ theme }: ThemeContext) => theme.fonts.bold};
+`;

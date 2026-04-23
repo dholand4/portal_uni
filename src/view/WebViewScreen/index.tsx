@@ -16,7 +16,11 @@ import {
   MenuItem,
   MenuItemLabel,
   MenuWrap,
+  Message,
+  OpenExternalButton,
+  OpenExternalButtonLabel,
   Row,
+  SupportCard,
   Title,
   WebViewContainer
 } from './styles';
@@ -26,6 +30,7 @@ type Props = NativeStackScreenProps<RootStackParamList, 'WebViewScreen'>;
 export function WebViewScreen({ navigation, route }: Props) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [canGoBack, setCanGoBack] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const webViewRef = useRef<WebView>(null);
 
   useEffect(() => {
@@ -74,12 +79,29 @@ export function WebViewScreen({ navigation, route }: Props) {
       </Header>
 
       <WebViewContainer>
-        <WebView
-          ref={webViewRef}
-          source={{ uri: route.params.url }}
-          style={{ flex: 1 }}
-          onNavigationStateChange={handleNavigationStateChange}
-        />
+        {errorMessage ? (
+          <SupportCard>
+            <Title>{route.params.title}</Title>
+            <Message>{errorMessage}</Message>
+            <OpenExternalButton onPress={handleOpenInBrowser}>
+              <OpenExternalButtonLabel>Abrir no navegador</OpenExternalButtonLabel>
+            </OpenExternalButton>
+          </SupportCard>
+        ) : (
+          <WebView
+            ref={webViewRef}
+            source={{ uri: route.params.url }}
+            style={{ flex: 1 }}
+            onNavigationStateChange={handleNavigationStateChange}
+            onError={(syntheticEvent) => {
+              const { description } = syntheticEvent.nativeEvent;
+              setErrorMessage(
+                description ||
+                  'Nao foi possivel carregar esta pagina no app. Tente abrir no navegador.'
+              );
+            }}
+          />
+        )}
       </WebViewContainer>
 
       {menuOpen ? (
